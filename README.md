@@ -5,6 +5,8 @@ Cataract surgery is a sight saving surgery that is performed over 10 million tim
 # Instructions
 To get started...
 
+To reproduce our experiments, please download the [cataract 101 dataset](http://ftp.itec.aau.at/datasets/ovid/cat-101/).
+
 ## Usage
 
 
