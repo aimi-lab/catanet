@@ -12,6 +12,7 @@ Cataract surgery is a sight saving surgery that is performed over 10 million tim
 To reproduce our experiments, please download the [cataract 101 dataset](http://ftp.itec.aau.at/datasets/ovid/cat-101/). 
 
 With the dataset, we extracted the frames by running: 
+
 ``python utils/process_tools.py --label cataract101 --input path/to/cataract101 --output data``
 
 
