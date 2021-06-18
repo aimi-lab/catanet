@@ -13,7 +13,7 @@ To reproduce our experiments, please download the [cataract 101 dataset](http://
 
 With the dataset, we extracted the frames by running: 
 
-``python utils/process_tools.py --label cataract101 --input path/to/cataract101 --output data``
+``python utils/process_videos.py --label cataract101 --input path/to/cataract101 --output data``
 
 
 
