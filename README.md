@@ -10,21 +10,45 @@ Cataract surgery is a sight saving surgery that is performed over 10 million tim
 # Instructions
 
 To reproduce our experiments, please download the [cataract 101 dataset](http://ftp.itec.aau.at/datasets/ovid/cat-101/). 
+#ToDO: add our custom labels!!!!!!!!!!!!!!!!!!
+Prepare the dataset by downloading the videos (in mp4 format) and store videos and label files in a single folder.
+The videos are sampled at 2.5 fps and resized to 256x256 pixels. Additionally, the sequence before the start and after 
+the end of the surgery are discarded.
+```
+cd tools
+python process_videos.py --input path/to/cataract101 --output ../data/cataract101
+```
 
-With the dataset, we extracted the frames by running: 
-
-``python utils/process_videos.py --label cataract101 --input path/to/cataract101 --output data``
-
-
+Once extracted, split the dataset into train/val/test. To reproduce the 6-fold-crossvalidation in the paper run the following, where you choose which fold to extract (1 to 6).
+```
+cd tools
+python split_data.py --input ../data/cataract101 --out ../data/cataract101 --fold 1
+```
 
 ## Train CataNet
 
-To train the model, first run the train_cnn 
+Train first the 2D-CNN on surgical phase and experience prediction with 
+```
+python train_cnn.py --out path/to/cnn/folder --log True
+```
+Then train the RNN on phase, experience and RSD prediction with
+```
+python train_rnn.py --out path/to/rnn/folder --log True --pretrained path/to/cnn/folder/catRSDNet_CNN.pth
+```
 
-
+### Evaluation
+Test the trained model on a test set by running:
+```
+cd tools
+python inference_catrsdnet.py --out path/to/output --checkpoint path/to/model.pth --input path/to/dataset/test
+```
+In the output folder there is a csv-file with the model inference and a visualization for each video. Additionally, 
+the script prints the summary performance statistics for the whole test set. Performance metrics are macro averaged over
+videos.
 
 ## Resources
 
+You are going to need ffmpeg.
 
 ### Acknowledgments
 
