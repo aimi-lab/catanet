@@ -16,4 +16,4 @@ To reproduce our experiments, please download the [cataract 101 dataset](http://
 
 ### Acknowledgments
 
-This work was partially supported by the Haag-Streit Foundation and the University of Bern.
+This code was developed jointly by Michel Hayoz and Andrés Marafioti. The development was partially supported by the Haag-Streit Foundation and the University of Bern.
