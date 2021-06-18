@@ -148,7 +148,7 @@ if __name__ == '__main__':
         '--label',
         type=str,
         choices=['cataract101', 'CATARACTs', 'startend'],
-        default='startend',
+        default='cataract101',
         help='type of label, if startend provide a csv file with fields {PatientID,Start,End}. '
              'Start/End in format XX:XX.'
     )
