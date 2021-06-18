@@ -74,30 +74,3 @@ class DatasetCataract101(DatasetNoLabel):
         patientID, frame_number = self._name2id(self.img_files[index])
         label = self.label_files[patientID][frame_number]
         return img, label
-
-
-class DatasetPartiallyLabeled(DatasetNoLabel):
-    """
-    Dataset for folders with sampled png images from videos
-    """
-    def __init__(self, datafolders, label_files, img_transform=None, max_len=20, fps=2.5):
-        super().__init__(datafolders, img_transform, max_len, fps)
-        self.label_files = {}
-        for f in label_files:
-            patientID = os.path.splitext(os.path.basename(f))[0]
-            self.label_files[patientID] = np.genfromtxt(f, delimiter=',', skip_header=1)[:, 1:]
-
-    def __getitem__(self, index):
-        img, elapsed_time, frame_number, rsd = super().__getitem__(index)
-
-        # load label
-        patientID, frame_number = self._name2id(self.img_files[index])
-        # check if there exists a label for the patient ID
-        if patientID in self.label_files:
-            label = self.label_files[patientID][frame_number]
-            step = label[0]
-            experience = label[2] - 1
-        else:
-            step = -1
-            experience = -1
-        return img, elapsed_time, frame_number, rsd, step, experience
