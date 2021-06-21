@@ -9,16 +9,14 @@ Cataract surgery is a sight saving surgery that is performed over 10 million tim
 
 # Instructions
 
-To reproduce our experiments, please download the [cataract 101 dataset](http://ftp.itec.aau.at/datasets/ovid/cat-101/). 
-#ToDO: add our custom labels!!!!!!!!!!!!!!!!!!
-Prepare the dataset by downloading the videos (in mp4 format) and store videos and label files in a single folder.
-The videos are sampled at 2.5 fps and resized to 256x256 pixels. Additionally, the sequence before the start and after 
-the end of the surgery are discarded.
+To reproduce our experiments, please download the [cataract 101 dataset](http://ftp.itec.aau.at/datasets/ovid/cat-101/) and our modified [label files](https://doi.org/10.5281/zenodo.4984167). 
+Put all video and label files into a single folder and run
 ```
 cd tools
 python process_videos.py --input path/to/cataract101 --output ../data/cataract101
 ```
-
+The videos are sampled at 2.5 fps and resized to 256x256 pixels. Additionally, the sequence before the start and after 
+the end of the surgery are discarded.
 Once extracted, split the dataset into train/val/test. To reproduce the 6-fold-crossvalidation in the paper run the following, where you choose which fold to extract (1 to 6).
 ```
 cd tools
