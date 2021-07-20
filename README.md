@@ -1,6 +1,6 @@
 # CataNet: Predicting remaining cataract surgery duration
 
-This repository contains the code accompanying the paper "CataNet: Predicting remaining cataract surgery duration", accepted for publication at MICCAI 2021. 
+This repository contains the code accompanying the paper "CataNet: Predicting remaining cataract surgery duration", accepted for publication at MICCAI 2021 (https://arxiv.org/abs/2106.11048). 
 
 ### Abstract
 
